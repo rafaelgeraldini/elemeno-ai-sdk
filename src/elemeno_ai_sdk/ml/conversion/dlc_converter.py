@@ -1,5 +1,18 @@
-from elemeno_ai_sdk.ml.conversion.converter import ModelConverter
+import logging
+import os
+
 from elemeno_ai_sdk.ml.conversion.dlc_conversion.DLC_model_converter import DLCModelConverter
+
+
+CONVERTERS = {
+    "h5": "tensorflow",
+    "onnx": "onnx",
+    "tflite": "tflite",
+    "pt": "pytorch",
+    "pth": "pytorch",
+}
+
+logging.basicConfig(level=logging.INFO)
 
 
 class DLCConverter:
@@ -28,14 +41,11 @@ class DLCConverter:
         """
 
         dlc_model_converter = DLCModelConverter(self.snpe_sdk_path)
-        file_extension = self.model_path.split(".")[-1]
-        if file_extension != "onnx":
-            input_dim = list(self.config.get("input_dim").values())
-            dimension = tuple(map(int, input_dim[0].split(",")))
-            onnx_conversion = ModelConverter(self.model_path, dimension)
-            onnx_conversion.apply_conversion()
-            self.model_path = self.model_path + ".onnx"
+        if os.path.isdir(self.model_path):
+            file_extension = "h5"
+        else:
+            file_extension = self.model_path.split(".")[-1]
 
-        dlc_model_converter.run_convert("onnx", self.model_path, self.config, self.quantize)
+        dlc_model_converter.run_convert(CONVERTERS[file_extension], self.model_path, self.config, self.quantize)
 
         return

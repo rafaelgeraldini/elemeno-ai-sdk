@@ -1,6 +1,9 @@
 from elemeno_ai_sdk.ml.conversion.dlc_conversion.commands.interface.command import Command
 from elemeno_ai_sdk.ml.conversion.dlc_conversion.entities.interface.model import Model
 from elemeno_ai_sdk.ml.conversion.dlc_conversion.entities.onnx_model import ONNXModel
+from elemeno_ai_sdk.ml.conversion.dlc_conversion.entities.pytorch_model import PytorchModel
+from elemeno_ai_sdk.ml.conversion.dlc_conversion.entities.tensorflow_model import TensorflowModel
+from elemeno_ai_sdk.ml.conversion.dlc_conversion.entities.tflite_model import TFLiteModel
 from elemeno_ai_sdk.ml.conversion.dlc_conversion.service.model_domain_service import (
     ModelDomainService,
 )
@@ -8,6 +11,9 @@ from elemeno_ai_sdk.ml.conversion.dlc_conversion.service.model_domain_service im
 
 FLAVOURS = {
     "onnx": ONNXModel,
+    "tflite": TFLiteModel,
+    "tensorflow": TensorflowModel,
+    "pytorch": PytorchModel,
 }
 
 

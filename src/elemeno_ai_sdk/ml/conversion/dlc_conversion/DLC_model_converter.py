@@ -28,7 +28,7 @@ class DLCModelConverter:
 
     def run_convert(
         self,
-        flavour: Literal["onnx"],
+        flavour: Literal["onnx", "tensorflow", "tflite", "pytorch"],
         path: str,
         config: dict,
         quantize: bool = False,
