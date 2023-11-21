@@ -1,5 +1,4 @@
 import logging
-import os
 from typing import Dict
 
 import onnx
@@ -37,14 +36,14 @@ class ONNXModel(Model):
             onnx_model = onnx.load(self.path)
             onnx.checker.check_model(onnx_model)
         except Exception as e:
-            logging.error("Invalid ONNX model" + str(e))
+            logging.error("Invalid ONNX model: " + str(e))
 
     def initialize(self) -> None:
         """
         Initialize the model command
         """
 
-        output_path = os.path.join(self.config.get("output_path"), "converted_model.dlc")
+        output_path = super().out_path()
 
         input_dim = self.config.get("input_dim")
 

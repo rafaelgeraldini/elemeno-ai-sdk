@@ -9,3 +9,6 @@ class Model:
 
     def initialize(self) -> None:
         pass
+
+    def out_path(self) -> None:
+        return ".".join(self.path.split(".")[:-1]) + ".dlc"
