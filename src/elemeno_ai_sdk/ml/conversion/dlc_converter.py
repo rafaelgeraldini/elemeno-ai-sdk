@@ -1,4 +1,3 @@
-import logging
 import os
 
 from elemeno_ai_sdk.ml.conversion.dlc_conversion.DLC_model_converter import DLCModelConverter
@@ -11,8 +10,6 @@ CONVERTERS = {
     "pt": "pytorch",
     "pth": "pytorch",
 }
-
-logging.basicConfig(level=logging.INFO)
 
 
 class DLCConverter:
