@@ -26,9 +26,9 @@ class QuantizeDLCCommand(Command):
         """
         Execute the command
         """
-        model_path = os.path.join(self.model.config.get("output_path"), "converted_model.dlc")
+        model_path = self.model.out_path()
 
-        quantized_path = os.path.join(self.model.config.get("output_path"), "quantized_model.dlc")
+        quantized_path = ".".join(model_path.split(".")[:-1]) + "quantized.dlc"
 
         shell_command = (
             "snpe-dlc-quantize --input_dlc "
