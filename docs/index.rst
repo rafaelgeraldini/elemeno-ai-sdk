@@ -13,6 +13,7 @@ Welcome to Elemeno.ai SDK's documentation!
    gettingstarted/index
    authentication/auth
    models/model_conversion
+   models/DLC_conversion
    featurestore/fs
     
 
